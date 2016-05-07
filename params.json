@@ -1,0 +1,6 @@
+{
+  "name": "中国农大Urp绩点计算",
+  "tagline": "中国农大Urp绩点计算:输入Urp教务学号和密码即可自动计算每个学期的平均绩点。",
+  "body": "# 中国农大Urp绩点计算\r\n作者：张云浩    QQ : 3358023393(新)\r\n\r\n\r\n\r\n## **如何使用**\r\n\r\n- 点击上方Download ZIP按钮，即可将整个项目下载至电脑。\r\n- 解压ZIP文件，打开其中/User目录，点击'urp_gpa.exe'文件，输入Urp教务系统账号和密码即可。\r\n\r\n**注**：\r\n\r\n- 建议使用 管理员模式 + win7兼容模式 打开(为了最大的兼容性,打包环境为win7-32bit)。\r\n\r\n## **当前版本**\r\n\r\n- 版本Ver1.3:\r\n\r\n  1.解决了双学位和不及格成绩的计算。\r\n\r\n  2.优化了程序结构，修复了一个不能正确访问的BUG。\r\n\r\n## **开发信息**\r\n\r\n语言：Python 2.7.11\r\n\r\n打包环境： windows7 Home Basic 32-bit\r\n\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
