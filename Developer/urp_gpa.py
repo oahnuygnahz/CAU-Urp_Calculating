@@ -259,6 +259,6 @@ userinfo_get(list_temp)
 print '登录成功!正在查询中......'.decode('utf-8').encode('gbk')
 urp_login(list_temp[0], list_temp[1])
 
-print '查询完毕!感谢您的使用!'.decode('utf-8').encode('gbk')
-print '提示:此结果依据Urp系统成绩,可能和教务处成绩有出入! 作者:ZhangYunHao'.decode('utf-8').encode('gbk')
+print '查询完毕!感谢您的使用! 作者:ZhangYunHao'.decode('utf-8').encode('gbk')
+print '提示:此结果依据Urp系统成绩,可能和教务处成绩有出入(教务处可能存在特殊加权平均分)!'.decode('utf-8').encode('gbk')
 end = raw_input('回车键关闭窗口!'.decode('utf-8').encode('gbk'))
