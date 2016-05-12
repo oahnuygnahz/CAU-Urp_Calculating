@@ -1,6 +1,8 @@
 # 中国农大Urp绩点计算
 作者：张云浩    QQ : 3358023393(新)
 
+关键词： China Agricultural University，中国农业大学，Urp计算，绩点
+
 ## 特性
 
 - 输入Urp学号密码即可计算
