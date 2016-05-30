@@ -2,8 +2,23 @@
 import urllib2
 import cookielib
 import time
+import sys
 import re
 
+class UnicodeStreamFilter:
+    def __init__(self, target):
+        self.target = target
+        self.encoding = 'utf-8'
+        self.errors = 'replace'
+        self.encode_to = self.target.encoding
+    def write(self, s):
+        if type(s) == str:
+            s = s.decode("utf-8")
+        s = s.encode(self.encode_to, self.errors).decode(self.encode_to)
+        self.target.write(s)
+
+if sys.stdout.encoding == 'cp936':
+    sys.stdout = UnicodeStreamFilter(sys.stdout)
 
 class lesson:
 	# __course_number1 = '0'
@@ -230,20 +245,20 @@ def urp_login(userid, password):
 			x = x + lesson_list[a + j].get_mul()
 			y = y + float(lesson_list[a + j].get_credit())
 		try:
-			print str(temp_term[i].encode('gbk')) + ': ' + '%.2f' % (x / y) + ' (real:%.4f)' % (x / y)
+			print str(temp_term[i].encode('utf-8')) + ': ' + '%.2f' % (x / y) + ' (real:%.4f)' % (x / y)
 		except ZeroDivisionError:
-			print '查询错误,您的成绩可能不存在!'.decode('utf-8').encode('gbk')
+			print '查询错误,您的成绩可能不存在!'
 		x = float(0)
 		y = float(0)
 
 
 def userinfo_get(list_temp):
-	print '欢迎使用 <中国农业大学URP平均绩点查询系统-ver1.3> Author: ZhangYunHao '.decode('utf-8').encode('gbk')
-	print '报告BUG,请联系:QQ 3358023393(新号)'.decode('utf-8').encode('gbk')
-	userid = raw_input('请输入您的学号(回车键结束):'.decode('utf-8').encode('gbk'))
-	password = raw_input('请输入您的urp密码(回车键结束):'.decode('utf-8').encode('gbk'))
+	print '欢迎使用 <中国农业大学URP平均绩点查询系统-ver1.3> Author: ZhangYunHao '
+	print '报告BUG,请联系:QQ 3358023393(新号)'
+	userid = raw_input('请输入您的学号(回车键结束):')
+	password = raw_input('请输入您的urp密码(回车键结束):')
 	if login_test(userid, password) < 1:
-		print '您输入的 学号 或 密码 出现错误.请重新输入!'.decode('utf-8').encode('gbk')
+		print '您输入的 学号 或 密码 出现错误.请重新输入!'
 		print ' '
 		userinfo_get(list_temp)
 		return 0
@@ -256,9 +271,8 @@ password = ''
 list_temp = [userid, password]
 userinfo_get(list_temp)
 
-print '登录成功!正在查询中......'.decode('utf-8').encode('gbk')
+print '登录成功!正在查询中......'
 urp_login(list_temp[0], list_temp[1])
-
-print '查询完毕!感谢您的使用! 作者:ZhangYunHao'.decode('utf-8').encode('gbk')
-print '提示:此结果依据Urp系统成绩,可能和教务处成绩有出入(教务处可能存在特殊加权平均分)!'.decode('utf-8').encode('gbk')
-end = raw_input('回车键关闭窗口!'.decode('utf-8').encode('gbk'))
+print '查询完毕!感谢您的使用! 作者:ZhangYunHao'
+print '提示:此结果依据Urp系统成绩,可能和教务处成绩有出入(教务处可能存在特殊加权平均分)!'
+end = raw_input('回车键关闭窗口!')
